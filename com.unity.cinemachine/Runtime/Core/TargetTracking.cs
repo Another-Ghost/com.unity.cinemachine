@@ -392,6 +392,7 @@ namespace Unity.Cinemachine.TargetTracking
             BindingMode bindingMode,
             ref CameraState newState)
         {
+<<<<<<< Updated upstream
             // Get target position relative to camera, in camera-local space
             var state = component.VcamState; // old state
             var offset = Quaternion.Inverse(state.GetFinalOrientation()) * (PreviousTargetPosition - state.GetFinalPosition());
@@ -401,6 +402,12 @@ namespace Unity.Cinemachine.TargetTracking
             PreviousTargetPosition = newState.GetFinalPosition() + offset;
             PreviousReferenceOrientation = GetReferenceOrientation(component, bindingMode, newState.ReferenceUp, ref newState);
             m_PreviousOffset = -offset;
+=======
+            // Infer target pos from camera
+            var targetRot = bindingMode == BindingMode.LazyFollow
+                ? rot : GetReferenceOrientation(component, bindingMode, component.VirtualCamera.State.ReferenceUp);
+            PreviousTargetPosition = pos - targetRot * cameraOffsetLocalSpace;  //前一相机的位置 - CameraLocalOffset = 假设的之前的目标位置
+>>>>>>> Stashed changes
         }
     }
 }

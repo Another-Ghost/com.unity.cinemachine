@@ -318,9 +318,9 @@ namespace Unity.Cinemachine.Editor
             }
             if (noCamera)
             {
-                InspectorUtility.HelpBoxWithButton(
-                    k_NeedCamera, MessageType.Warning,
-                    new GUIContent(k_AddCamera), () => AddCmCameraToTargets(targets));
+                // InspectorUtility.HelpBoxWithButton(
+                //     k_NeedCamera, MessageType.Warning,
+                //     new GUIContent(k_AddCamera), () => AddCmCameraToTargets(targets));
                 EditorGUILayout.Space();
             }
             else if (noTarget)

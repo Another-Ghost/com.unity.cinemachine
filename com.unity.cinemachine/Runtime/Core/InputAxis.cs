@@ -169,7 +169,7 @@ namespace Unity.Cinemachine
                 return Mathf.Clamp(v, Range.x, Range.y);
 
             var v1 = (v - Range.x) % r;
-            v1 += v1 < 0 ? r : 0;
+            v1 += v1 < 0 ? r : 0; // LB 防止余数为负数，相当于商加1，结果仍不会超过 r（正常C#整除计算会有负值吗？）
             return v1 + Range.x;
         }
 
@@ -365,7 +365,7 @@ namespace Unity.Cinemachine
                     m_CurrentSpeed = 0;
                 else
                 {
-                    m_CurrentSpeed += Damper.Damp(inputValue - m_CurrentSpeed, dampTime, deltaTime);
+                    m_CurrentSpeed += Damper.Damp(inputValue - m_CurrentSpeed, dampTime, deltaTime); // LB m_CurrentSpeed 会缓动至 inputValue
 
                     // Decelerate to the end points of the range if not wrapping
                     if (!axis.Wrap && DecelTime > k_Epsilon && Mathf.Abs(m_CurrentSpeed) > k_Epsilon)

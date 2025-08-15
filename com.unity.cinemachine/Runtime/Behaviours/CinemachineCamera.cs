@@ -209,7 +209,7 @@ namespace Unity.Cinemachine
                 PreviousStateIsValid = false;
 
             // Initialize the camera state, in case the game object got moved in the editor
-            m_State = PullStateFromVirtualCamera(worldUp, ref Lens);
+            m_State = PullStateFromVirtualCamera(worldUp, ref Lens); // LB? Editor?
 
             // Do our stuff
             var lookAt = LookAt;
@@ -221,7 +221,7 @@ namespace Unity.Cinemachine
 
             // Push the raw position back to the game object's transform, so it
             // moves along with the camera.
-            transform.ConservativeSetPositionAndRotation(m_State.RawPosition, m_State.RawOrientation);
+            transform.ConservativeSetPositionAndRotation(m_State.RawPosition, m_State.RawOrientation); // LB 更新 Transform 的位置
 
             // Signal that it's all done
             PreviousStateIsValid = true;

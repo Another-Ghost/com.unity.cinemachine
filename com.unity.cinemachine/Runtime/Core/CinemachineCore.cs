@@ -266,7 +266,7 @@ namespace Unity.Cinemachine
         /// </summary>
         /// <param name="vcam">The virtual camera in question</param>
         /// <returns>True if the vcam is currently driving a Brain</returns>
-        public static bool IsLive(ICinemachineCamera vcam)
+        public static bool IsLive(ICinemachineCamera vcam) // LB CamB
         {
             if (vcam != null)
             {

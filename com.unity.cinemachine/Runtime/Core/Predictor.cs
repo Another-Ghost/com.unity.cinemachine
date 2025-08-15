@@ -88,7 +88,7 @@ namespace Unity.Cinemachine
 
         // Exponential decay: decay a given quantity over a period of time
         static float DecayedRemainder(float initial, float decayConstant, float deltaTime)
-            => initial / Mathf.Exp(decayConstant * deltaTime);
+            => initial / Mathf.Exp(decayConstant * deltaTime);        
 
         /// <summary>Standard residual</summary>
         public const float kNegligibleResidual = 0.01f;
@@ -156,7 +156,7 @@ namespace Unity.Cinemachine
                 return initial;
             if (deltaTime < Epsilon)
                 return 0;
-            return initial * (1 - Mathf.Exp(kLogNegligibleResidual * deltaTime / dampTime));
+            return initial * (1 - Mathf.Exp(kLogNegligibleResidual * deltaTime / dampTime)); // LB 指数衰减：e^Negligible是0.01，dampTime 越大，负指数值越小，指数越大，比例值1-e^Negligible越小，移动量越小，damp越慢
         }
 
         /// <summary>

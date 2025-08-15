@@ -7,7 +7,7 @@ namespace Unity.Cinemachine
     /// This interface provides a way to override camera selection logic.
     /// The cinemachine timeline track drives its target via this interface.
     /// </summary>
-    public interface ICameraOverrideStack
+    public interface ICameraOverrideStack // LB 貌似只Timeline用到这个接口相关内容
     {
         /// <summary>
         /// Override the current camera and current blend.  This setting will trump
@@ -30,7 +30,7 @@ namespace Unity.Cinemachine
         /// time-based calculations to be included, -1 otherwise.</param>
         /// <returns>The override ID.  Don't forget to call ReleaseCameraOverride
         /// after all overriding is finished, to free the OverrideStack resources.</returns>
-        int SetCameraOverride(
+        int SetCameraOverride( 
             int overrideId,
             int priority,
             ICinemachineCamera camA, ICinemachineCamera camB,
@@ -245,7 +245,7 @@ namespace Unity.Cinemachine
                     && outgoingCamera != null && outgoingCamera.IsValid && deltaTime >= 0)
                 {
                     // Create a blend (curve will be null if a cut)
-                    var blendDef = LookupBlendDelegate(outgoingCamera, activeCamera);
+                    var blendDef = LookupBlendDelegate(outgoingCamera, activeCamera); // LB 获取 BlendDefinition
                     if (blendDef.BlendCurve != null && blendDef.BlendTime > kEpsilon)
                     {
                         // Are we backing out of a blend-in-progress?
@@ -346,7 +346,7 @@ namespace Unity.Cinemachine
                         blendCompleted = true;
                     }
                     else if (blend.CamA is NestedBlendSource bs)
-                        AdvanceBlend(bs.Blend, deltaTime);
+                        AdvanceBlend(bs.Blend, deltaTime); // LB? 是不是该加 return？
                 }
                 return blendCompleted;
             }

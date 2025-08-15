@@ -201,7 +201,7 @@ namespace Unity.Cinemachine
         internal Vector3 GetCameraOffsetForNormalizedAxisValue(float t)
             => m_OrbitCache.SplineValue(Mathf.Clamp01((t + 1) * 0.5f));
 
-        Vector4 GetCameraPoint()
+        Vector4 GetCameraPoint() // LB 获取输入引起的相对 target 的 position（不考虑 damping）
         {
             Vector3 pos;
             float t;

@@ -10,7 +10,7 @@ namespace Unity.Cinemachine
     /// </summary>
     internal class UpdateTracker
     {
-        public enum UpdateClock { Fixed = 1, Late = 2}
+        public enum UpdateClock { Fixed = 1, Late = 2} // LB clock（时钟）意味着更新是按 FIxedUpdate 还是 LateUpdate 进行的
 
         class UpdateStatus
         {

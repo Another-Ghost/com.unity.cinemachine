@@ -6,7 +6,7 @@ namespace Unity.Cinemachine
     /// An abstract representation of a mutator acting on a CinemachineCamera
     /// </summary>
     [ExecuteAlways]
-    public abstract class CinemachineComponentBase : MonoBehaviour
+    public abstract class CinemachineComponentBase : MonoBehaviour // LB Stage 的基类
     {
         /// <summary>Useful constant for very small floats</summary>
         protected const float Epsilon = UnityVectorExtensions.Epsilon;

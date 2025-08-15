@@ -210,7 +210,7 @@ namespace Unity.Cinemachine
         /// <param name="stateB">The second state, corresponding to t=1</param>
         /// <param name="t">How much to interpolate.  Internally clamped to 0..1</param>
         /// <returns>Linearly interpolated CameraState</returns>
-        public static CameraState Lerp(in CameraState stateA, in CameraState stateB, float t)
+        public static CameraState Lerp(in CameraState stateA, in CameraState stateB, float t) // LB 核心 blend 方法
         {
             t = Mathf.Clamp01(t);
             float adjustedT = t;
@@ -529,7 +529,7 @@ namespace Unity.Cinemachine
         /// </summary>
         /// <param name="state">Camera state to check</param>
         /// <returns>True if target is outside the camera frustum</returns>
-        public static bool IsTargetOffscreen(this CameraState state)
+        public static bool IsTargetOffscreen(this CameraState state)    // LB 通过目标与相机xoy 平面的夹角是否在 FOV 范围内来判断
         {
             if (state.HasLookAt())
             {
